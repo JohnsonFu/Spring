@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  * Created by fulinhua on 2016/12/10.
  */
@@ -31,6 +34,12 @@ public class BookController  {
     @RequestMapping(value="/book_save")
     public String saveBook(@ModelAttribute Book book){
         bookService.save(book);
-        return "BookAddForm";
+        return "redirect:/book_list";
+    }
+    @RequestMapping(value="/book_list")
+    public String showBook(Model model) throws SQLException {
+        List<Book> list=bookService.getAllBooks();
+        model.addAttribute("books",list);
+        return "BookShow";
     }
 }

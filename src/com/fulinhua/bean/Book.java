@@ -1,9 +1,11 @@
 package com.fulinhua.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by fulinhua on 2016/12/10.
  */
-public class Book {
+public class Book implements Serializable {
     public Book(){};
     public Book(String name, String author, double price) {
         super();
