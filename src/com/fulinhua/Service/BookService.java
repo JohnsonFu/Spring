@@ -7,4 +7,5 @@ import com.fulinhua.bean.Book;
  */
 public interface BookService {
   public  void save(Book book);
+
 }

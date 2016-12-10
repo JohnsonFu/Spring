@@ -6,8 +6,15 @@
       <root url="jar://$PROJECT_DIR$/lib/spring-web-4.3.4.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/spring-webmvc-4.3.4.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/spring-websocket-4.3.4.RELEASE.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/mysql-connector-java-5.1.39-bin.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/ppt-20161130/hibernate-3.0.1.jar!/" />
+      <root url="file://$PROJECT_DIR$/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <jarDirectory url="file://$USER_HOME$/Desktop/lib-4/required" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/Desktop/lib-4/required" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
+    <jarDirectory url="jar://$USER_HOME$/Desktop/ppt-20161130/hibernate-3.0.1.jar!/" recursive="false" />
   </library>
 </component>
