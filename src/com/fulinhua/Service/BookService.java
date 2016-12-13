@@ -11,4 +11,10 @@ import java.util.List;
 public interface BookService {
   public  void save(Book book);
  public List<Book> getAllBooks() throws SQLException;
+
+  public  void remove(int id);
+
+  public  Book getBook(int id);
+
+   public void update(Book book);
 }

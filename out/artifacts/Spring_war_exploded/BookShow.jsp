@@ -10,12 +10,27 @@
 <html>
 <head>
     <title>Title</title>
-<c:forEach items="${books}" var="book">
-    ${book.id}--${book.name}--${book.author}--${book.price}
-    <br>
-</c:forEach>
 </head>
 <body>
+    <table border="1">
+        <tr>
+            <th>书名</th>
+            <th>作者</th>
+            <th>价格</th>
+            <th>删除</th>
+            <th>编辑</th>
+        </tr>
+        <c:forEach items="${books}" var="book">
+    <tr>
+    <th>${book.name}</th>
+    <th>${book.author}</th>
+    <th>${book.price }</th>
+    <th><a href="book_edit/${book.id}">编辑</a></th>
+    <th><a href="book_remove/${book.id}">删除</a></th>
+    </tr>
+</c:forEach>
+    </table>
+
 
 </body>
 </html>

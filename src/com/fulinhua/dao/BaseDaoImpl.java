@@ -87,7 +87,7 @@ public class BaseDaoImpl<T> {
     }
 
 
-    public void delete(String bookname) throws SQLException{
+    public void delete(int id) throws SQLException{
 //		 PreparedStatement pstmt=null;
 //			String sql="delete from booklist where name=?";
 //			pstmt=this.con.prepareStatement(sql);
@@ -104,8 +104,8 @@ public class BaseDaoImpl<T> {
         Transaction tx = sess.beginTransaction();
         // 创建消息实例
 
-        Query query = sess.createQuery("delete  Book b  where b.name=?");
-        query.setString(0, bookname);
+        Query query = sess.createQuery("delete  Book b  where b.id=?");
+        query.setInteger(0, id);
         query.executeUpdate();
         // 提交事务
         tx.commit();
@@ -146,5 +146,26 @@ public class BaseDaoImpl<T> {
         sess.close();
         sf.close();
         return list;
+    }
+
+    public Book getBook(int id) {
+        Configuration conf = new Configuration()
+                // 下面方法默认加载hibernate.cfg.xml文件
+                .configure();
+        // 以Configuration创建SessionFactory
+        SessionFactory sf = conf.buildSessionFactory();
+        // 创建Session
+        Session sess = sf.openSession();
+        // 开始事务
+        Transaction tx = sess.beginTransaction();
+        List<Book> list = sess.createQuery("from Book b where b.id=?")
+                .setInteger(0, id)
+                .list();
+        if(list.size()==0) {
+            return null;//未找到这本书
+        }
+        return list.get(0);
+
+
     }
 }

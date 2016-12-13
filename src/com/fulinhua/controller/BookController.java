@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.sql.SQLException;
@@ -42,4 +43,23 @@ public class BookController  {
         model.addAttribute("books",list);
         return "BookShow";
     }
+    @RequestMapping(value="/book_remove/{id}")
+    public String removeBook(@PathVariable int id, Model model) throws SQLException {
+        bookService.remove(id);
+        List<Book> list=bookService.getAllBooks();
+        model.addAttribute("books",list);
+        return "redirect:/book_list";
+    }
+    @RequestMapping(value="/book_edit/{id}")//跳转到编辑页面
+    public String editBook(Model model,@PathVariable int id){
+        Book book=bookService.getBook(id);
+        model.addAttribute("book",book);
+        return "BookEditForm";
+    }
+    @RequestMapping(value="/book_update")
+    public String updateBook(@ModelAttribute Book book){
+        bookService.update(book);
+        return "redirect:/book_list";
+    }
+
 }

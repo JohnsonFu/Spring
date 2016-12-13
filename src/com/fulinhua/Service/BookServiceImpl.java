@@ -31,4 +31,27 @@ public class BookServiceImpl implements BookService {
 
         return dao.getBooks();
     }
+
+    @Override
+    public void remove(int id) {
+        try {
+            dao.delete(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Book getBook(int id) {
+        return dao.getBook(id);
+    }
+
+    @Override
+    public void update(Book book) {
+        try {
+            dao.update(book);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
