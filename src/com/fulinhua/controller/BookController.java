@@ -5,7 +5,6 @@ import com.fulinhua.bean.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,11 +28,11 @@ public class BookController  {
    private BookService bookService;
     @RequestMapping(value="/book_input")
     public String inputBook(Model model){
-        model.addAttribute("book",new Book());
+       // model.addAttribute("book",new Book());
         return "BookAddForm";
     }
     @RequestMapping(value="/book_save")
-    public String saveBook(@ModelAttribute Book book){
+    public String saveBook(Book book){
         bookService.save(book);
         return "redirect:/book_list";
     }
@@ -50,14 +49,15 @@ public class BookController  {
         model.addAttribute("books",list);
         return "redirect:/book_list";
     }
+
     @RequestMapping(value="/book_edit/{id}")//跳转到编辑页面
     public String editBook(Model model,@PathVariable int id){
-        Book book=bookService.getBook(id);
+         Book book=bookService.getBook(id);
         model.addAttribute("book",book);
         return "BookEditForm";
     }
     @RequestMapping(value="/book_update")
-    public String updateBook(@ModelAttribute Book book){
+    public String updateBook( Book book){
         bookService.update(book);
         return "redirect:/book_list";
     }

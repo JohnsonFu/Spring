@@ -12,14 +12,14 @@
     <title>Add Book Form</title>
 </head>
 <body>
-<form:form commandName="book" action="book_save" method="post">
+<form:form  action="book_save" method="post">
     <label>添加书籍</label><br>
-    <label for="name">书名</label>
-    <form:input id="name" path="name"/><br>
-    <label for="author">作者</label>
-    <form:input id="author" path="author"/><br>
-    <label for="price">价格:</label>
-    <form:input id="price" path="price"/><br>
+    <label >书名</label>
+    <input type="text" id="name" name="name"/><br>
+    <label >作者</label>
+    <input type="text" id="author" name="author"/><br>
+    <label >价格:</label>
+    <input input type="text" id="price" name="price"/><br>
     <input type="submit" value="提交" >
 
 </form:form>
