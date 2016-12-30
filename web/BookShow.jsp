@@ -7,12 +7,16 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="jquery-1.8.3/jquery.js"></script>
 <head>
     <title>Title</title>
 </head>
 <body>
-    <table border="1">
+    <table class="table table-bordered">
         <tr>
             <th>书名</th>
             <th>作者</th>

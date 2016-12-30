@@ -8,6 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="jquery-1.8.3/jquery.js"></script>
 <head>
     <title>Add Book Form</title>
 </head>
@@ -18,7 +21,7 @@
     <input type="text" id="name" name="name"/><br>
     <label >作者</label>
     <input type="text" id="author" name="author"/><br>
-    <label >价格:</label>
+    <label >价格</label>
     <input input type="text" id="price" name="price"/><br>
     <input type="submit" value="提交" >
 

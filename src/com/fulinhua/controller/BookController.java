@@ -1,7 +1,7 @@
 package com.fulinhua.controller;
 
-import com.fulinhua.Service.BookService;
 import com.fulinhua.bean.Book;
+import com.fulinhua.dao.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,16 +16,11 @@ import java.util.List;
  */
 @Controller
 public class BookController  {
-    public BookService getBookService() {
-        return bookService;
-    }
-
-    public void setBookService(BookService bookService) {
-        this.bookService = bookService;
-    }
 
     @Autowired
-   private BookService bookService;
+    private BookMapper bookMapper;
+
+
     @RequestMapping(value="/book_input")
     public String inputBook(Model model){
        // model.addAttribute("book",new Book());
@@ -33,32 +28,32 @@ public class BookController  {
     }
     @RequestMapping(value="/book_save")
     public String saveBook(Book book){
-        bookService.save(book);
+        bookMapper.insertBook(book);
         return "redirect:/book_list";
     }
     @RequestMapping(value="/book_list")
     public String showBook(Model model) throws SQLException {
-        List<Book> list=bookService.getAllBooks();
+        List<Book> list=bookMapper.getAllBook();
         model.addAttribute("books",list);
         return "BookShow";
     }
     @RequestMapping(value="/book_remove/{id}")
     public String removeBook(@PathVariable int id, Model model) throws SQLException {
-        bookService.remove(id);
-        List<Book> list=bookService.getAllBooks();
+        bookMapper.RemoveById(id);
+        List<Book> list=bookMapper.getAllBook();
         model.addAttribute("books",list);
         return "redirect:/book_list";
     }
 
     @RequestMapping(value="/book_edit/{id}")//跳转到编辑页面
     public String editBook(Model model,@PathVariable int id){
-         Book book=bookService.getBook(id);
+         Book book=bookMapper.getBook(id);
         model.addAttribute("book",book);
         return "BookEditForm";
     }
     @RequestMapping(value="/book_update")
     public String updateBook( Book book){
-        bookService.update(book);
+        bookMapper.updateBook(book);
         return "redirect:/book_list";
     }
 
